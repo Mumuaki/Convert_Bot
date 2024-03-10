@@ -19,7 +19,7 @@ def handle_start_help(message):
 
 @bot.message_handler(commands=["values"])
 def handle_values(message):
-    available_currencies = ["USD", "EUR", "GBP", "JPY", "CAD"]  # Add more currencies if needed
+    available_currencies = ["USD", "EUR", "GBP", "JPY", "CAD"]  
     currencies_text = "\n".join(available_currencies)
     bot.reply_to(message, f"Available currencies:\n{currencies_text}")
 
@@ -27,7 +27,6 @@ def handle_values(message):
 @bot.message_handler(func=lambda message: True)
 def handle_message(message):
     try:
-        # Parse the user input
         input_text = message.text.upper().split()
         if len(input_text) != 3:
             raise APIException("Invalid input. Please use the format: <base_currency> <quote_currency> <amount>")
